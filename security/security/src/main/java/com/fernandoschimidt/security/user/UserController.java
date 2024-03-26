@@ -1,23 +1,22 @@
 package com.fernandoschimidt.security.user;
 
-import org.springframework.stereotype.Controller;
+
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/user")
+@RequiredArgsConstructor
 public class UserController {
 
-    final UserService userService;
+    private final UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @PostMapping
     public User create(@RequestBody User user) {
         return userService.create(user);
-
     }
 }
